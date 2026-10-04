@@ -9,29 +9,45 @@
 </head>
 <body>
     <section class="overlay">
-        <div class="choice">
+        <div class="name">
+            <p>Rock Paper Scissors</p>
+        </div>
+        <div class="options">
             <p>What's your choice?</p>
-            <div class="div_btn">
+            <div>
                 <button class="btn" id="rock_btn">Rock</button>
                 <button class="btn" id="paper_btn">Paper</button>
-                <button class="btn" id="scissor_btn">Scissor</button>
+                <button class="btn" id="scissors_btn">Scissors</button>
             </div>
         </div>
+
         <div class="displey_choice">
             <p id="humanChoice">
                 Human choice: 
+                <span id="humanLog"></span>
             </p>
             <p id="computerChoice">
-                Computer choice:
+                Computer choice: 
+                <span id="computerLog"></span>
             </p>
         </div>
+
         <div class="whos_win">
-            <p>WIN: </p>
+            <p>WIN: <span id="winner"></span></p>
         </div>
+
         <div class="score">
-            <p id="human_score">Human score:</p>
-            <p id="computer_score">Computer score:</p>
+            <p id="human_score">
+                Human score:
+                <span id="humanSLog"></span>
+            </p>
+            <p id="computer_score">
+                Computer score:
+                <span id="computerSLog"></span>
+            </p>
         </div>
+
     </section>
+</div>
 </body>
 </html>

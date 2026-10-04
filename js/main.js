@@ -1,50 +1,59 @@
+const hmnLog = document.querySelector("#humanLog");
+const cprLog = document.querySelector("#computerLog");
+const hmnSLog = document.querySelector("#humanSLog");
+const cprSLog = document.querySelector("#computerSLog");
+const winLog = document.querySelector("#winner");
+
+
 let humanScore = 0;
 let computerScore = 0;
+let humanChoice = "";
+let computerChoice = "";
 
-function getComputedChoice() {
+function getComputerChoice() {
     let n = Math.random();
     
-    if (n < 0.3) {
+    if (n <= 0.3) {
         return 'Rock';
-    } else if (n > 0.3 && n < 0.7) {
+    } else if (n > 0.3 && n <= 0.6) {
         return 'Paper';
     } else {
-        return 'Scissor';
+        return 'Scissors';
     }
 };
 
-function getHumanChoice(choiceSelect) {
+function getHumanChoice(callback) {
     const rockBtn = document.querySelector("#rock_btn");
     const paperBtn = document.querySelector("#paper_btn");
-    const scissorBtn = document.querySelector("#scissor_btn");
+    const scissorsBtn = document.querySelector("#scissors_btn");
 
-    rockBtn.addEventListener("click", () => { choiceSelect('Rock')});
-    paperBtn.addEventListener("click", () => { choiceSelect('Paper')});  
-    scissorBtn.addEventListener("click", () => { choiceSelect('Scissor')});
-};
+    rockBtn.addEventListener("click", () => {callback('Rock')});
+    paperBtn.addEventListener("click", () => {callback('Paper')});
+    scissorsBtn.addEventListener("click", () => {callback('Scissors')});
+}
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice) {
-        return 'Draw'
+        return;
     }
 
     if (humanChoice == 'Rock') {
-        if (computerChoice == 'Scissor') {
+        if (computerChoice == 'Scissors') {
             humanScore++;
-            return 'Human';
+            return;
         } else {
             computerScore++;
-            return 'Computer'
+            return;
         }
     }
 
     if (humanChoice == 'Paper') {
         if (computerChoice == 'Rock') {
             humanScore++;
-            return 'Human';
+            return;
         } else {
             computerScore++;
-            return 'Computer'
+            return;
         }
     }
 
@@ -54,13 +63,37 @@ function playRound(humanChoice, computerChoice) {
             return 'Human';
         } else {
             computerScore++;
-            return 'Computer'
+            return;
         }
     }
 };
 
+function playGame() {
+    let round = 1;
 
+    getHumanChoice((humanChoice) => {
+        if (round > 5) {
+            if (humanScore == computerScore) {
+                winLog.innerHTML = 'Draw'
+            } else if (humanScore > computerScore) {
+                winLog.innerHTML = 'Human'
+            } else {
+                winLog.innerHTML = 'Computer'
+            }
+            return;
+        }
 
+        computerChoice = getComputerChoice();
+        hmnLog.innerHTML = humanChoice;
+        cprLog.innerHTML = computerChoice;
 
+        playRound(humanChoice, computerChoice);
+    
+        hmnSLog.innerHTML = humanScore;
+        cprSLog.innerHTML = computerScore;
 
+        round++;
+    });
+};
 
+playGame();
