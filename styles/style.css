@@ -1,15 +1,24 @@
+@font-face {
+    font-family: 'Isometra';
+    src: url('../assets/fonts/Isometra-Regular.ttf');
+}
+
 body {
     display: flex;
     justify-content: center;
 
+    background-color: #435B7D;
+    font-family: 'Isometra';
     font-size: 1.5rem;
     font-weight: bold;
+    color: rgb(31, 31, 31);
 }
 
 .overlay {
-    width: 700px;
-    height: 700px;
-    border: 1px solid black;
+    width: 43.75rem;
+    background-color: #416fa8;
+    border-radius: 0.8rem;
+    box-shadow: 1px 8px 10px 10px #192c44;
 }
 
 .name,
@@ -21,19 +30,56 @@ body {
     border-bottom: 1px solid black;
 }
 
+.name p {
+    font-size: 2.5rem;
+}
+
+.options p {
+    font-size: 2rem;
+}
+
+.options div {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  font-family: 'Isometra', sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  
+  min-width: 6.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #3991f5;
+  
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: #2578d8;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+
 .displey_choice,
 .score {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    border-bottom: 1px solid black;
     padding: 1rem;
 }
 
-.displey_choice {
-    border-bottom: 1px solid black;
-}
+
 
 .displey_choice p,
 .score p {
@@ -47,5 +93,4 @@ body {
     align-items: center;
 
     pad: 1rem;
-    border-bottom: 1px solid black;
 }
